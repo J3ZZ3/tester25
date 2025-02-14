@@ -54,7 +54,7 @@ const Navbar = () => {
     <Nav>
       <NavLinks>
         <StyledLink to="/">🏠 Home</StyledLink>
-        <StyledLink to="/gallery">📸 Our Story</StyledLink>
+        <StyledLink to="/gallery">📸 Your Beauty</StyledLink>
         <StyledLink to="/letter">💌 Love Letter</StyledLink>
         <StyledLink to="/countdown">⏰ Together Forever</StyledLink>
       </NavLinks>
