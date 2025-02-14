@@ -36,7 +36,12 @@ const HeartBeat = styled.div`
 const Letter = styled.p`
   font-size: 1.5rem;
   line-height: 1.6;
-  white-space: pre-line;
+  white-space: pre-wrap;
+  text-align: left;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin-top: 2rem;
 `;
 
 const LoveLetter = () => {
@@ -46,18 +51,18 @@ const LoveLetter = () => {
         <GlowingText>My Love Letter to You ❤️</GlowingText>
         <HeartBeat>❤️</HeartBeat>
         <Letter>
-          {`Sienna, My Love,
+          Sienna, My Love,
 
-From the moment you came into my life, everything changed. You are the light in my darkest days, the warmth in my coldest nights, and the love that fills my heart beyond words.
+          From the moment you came into my life, everything changed. You are the light in my darkest days, the warmth in my coldest nights, and the love that fills my heart beyond words.
 
-Every smile of yours melts my worries away, and every laugh is music to my soul. I am endlessly grateful for your kindness, your strength, and the way you love so effortlessly.
+          Every smile of yours melts my worries away, and every laugh is music to my soul. I am endlessly grateful for your kindness, your strength, and the way you love so effortlessly.
 
-No matter where life takes us, my heart will always belong to you. You are my greatest adventure, my sweetest dream, and my forever Valentine.
+          No matter where life takes us, my heart will always belong to you. You are my greatest adventure, my sweetest dream, and my forever Valentine.
 
-I love you more than words can ever express, today and always.
+          I love you more than words can ever express, today and always.
 
-Forever yours,
-Jesse`}
+          Forever yours,
+          Jesse
         </Letter>
       </Container>
     </AnimatedPage>
