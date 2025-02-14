@@ -6,7 +6,7 @@ import Hearts from "./components/Hearts";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import LoveLetter from "./pages/LoveLetter";
-import GlobalStyle from "./styles";
+import GlobalStyle from "./styles/GlobalStyle";
 import { useState, useEffect } from 'react';
 import backgroundMusic from './assets/bg.mp3'; 
 

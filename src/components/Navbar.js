@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Nav = styled.nav`
   display: flex;
@@ -9,12 +10,38 @@ const Nav = styled.nav`
   padding: 1rem;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   box-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+  position: relative;
 `;
 
 const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    padding: 1rem;
+    gap: 1rem;
+    z-index: 1000;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -42,21 +69,55 @@ const StyledLink = styled(Link)`
     }
   }
 
-  @keyframes heartBeat {
-    0% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.2); }
-    100% { transform: translateX(-50%) scale(1); }
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+`;
+
+const BurgerMenu = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  z-index: 1001;
+
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Nav>
-      <NavLinks>
-        <StyledLink to="/">🏠 Home</StyledLink>
-        <StyledLink to="/gallery">📸 Your Beauty</StyledLink>
-        <StyledLink to="/letter">💌 Love Letter</StyledLink>
-        <StyledLink to="/countdown">⏰ Together Forever</StyledLink>
+      <BurgerMenu onClick={toggleMenu}>
+        {isOpen ? '✕' : '☰'}
+      </BurgerMenu>
+      <NavLinks isOpen={isOpen}>
+        <StyledLink to="/" onClick={closeMenu}>🏠 Home</StyledLink>
+        <StyledLink to="/gallery" onClick={closeMenu}>📸 Our Story</StyledLink>
+        <StyledLink to="/letter" onClick={closeMenu}>💌 Love Letter</StyledLink>
+        <StyledLink to="/countdown" onClick={closeMenu}>⏰ Together Forever</StyledLink>
       </NavLinks>
     </Nav>
   );
