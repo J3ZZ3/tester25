@@ -10,6 +10,29 @@ const Container = styled.div`
   margin: auto;
 `;
 
+const GlowingText = styled.h1`
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff4d6d;
+  animation: pulse 2s infinite alternate;
+
+  @keyframes pulse {
+    from { text-shadow: 0 0 5px #ff7eb3, 0 0 10px #ff4d6d; }
+    to { text-shadow: 0 0 15px #ff4d6d, 0 0 25px #ff0033; }
+  }
+`;
+
+const HeartBeat = styled.div`
+  font-size: 3rem;
+  color: red;
+  animation: beat 1s infinite alternate;
+
+  @keyframes beat {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+  }
+`;
+
 const Letter = styled.p`
   font-size: 1.5rem;
   line-height: 1.6;
@@ -20,7 +43,8 @@ const LoveLetter = () => {
   return (
     <AnimatedPage>
       <Container>
-        <h1>My Love Letter to You ❤️</h1>
+        <GlowingText>My Love Letter to You ❤️</GlowingText>
+        <HeartBeat>❤️</HeartBeat>
         <Letter>
           {`Sienna, My Love,
 
@@ -33,7 +57,7 @@ No matter where life takes us, my heart will always belong to you. You are my gr
 I love you more than words can ever express, today and always.
 
 Forever yours,
-Jesse`}
+[Your Name]`}
         </Letter>
       </Container>
     </AnimatedPage>
