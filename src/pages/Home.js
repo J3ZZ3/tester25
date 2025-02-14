@@ -77,7 +77,7 @@ const Home = () => {
 
       <Section
         ref={letterRef}
-        initial="hidden"
+        initial="visible"
         animate={letterInView ? "visible" : "hidden"}
         variants={fadeIn}
         id="letter"
@@ -87,7 +87,7 @@ const Home = () => {
 
       <Section
         ref={countdownRef}
-        initial="hidden"
+        initial="visible"
         animate={countdownInView ? "visible" : "hidden"}
         variants={fadeIn}
         id="countdown"
