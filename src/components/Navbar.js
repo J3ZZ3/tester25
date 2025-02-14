@@ -1,5 +1,4 @@
 // src/components/Navbar.js
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -44,7 +43,7 @@ const NavLinks = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   color: white;
   text-decoration: none;
   font-size: 1.2rem;
@@ -53,6 +52,7 @@ const StyledLink = styled(Link)`
   border-radius: 20px;
   transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
   
   &:hover {
     transform: scale(1.1);
@@ -100,24 +100,35 @@ const BurgerMenu = styled.button`
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setIsOpen(false);
+    }
   };
 
   return (
     <Nav>
-      <BurgerMenu onClick={toggleMenu}>
+      <BurgerMenu onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? '✕' : '☰'}
       </BurgerMenu>
       <NavLinks isOpen={isOpen}>
-        <StyledLink to="/" onClick={closeMenu}>🏠 Home</StyledLink>
-        <StyledLink to="/gallery" onClick={closeMenu}>📸 Our Story</StyledLink>
-        <StyledLink to="/letter" onClick={closeMenu}>💌 Love Letter</StyledLink>
-        <StyledLink to="/countdown" onClick={closeMenu}>⏰ Together Forever</StyledLink>
+        <StyledLink onClick={() => scrollToSection('hero')}>
+          🏠 Home
+        </StyledLink>
+        <StyledLink onClick={() => scrollToSection('gallery')}>
+          📸 Our Story
+        </StyledLink>
+        <StyledLink onClick={() => scrollToSection('letter')}>
+          💌 Love Letter
+        </StyledLink>
+        <StyledLink onClick={() => scrollToSection('countdown')}>
+          ⏰ Together Forever
+        </StyledLink>
       </NavLinks>
     </Nav>
   );

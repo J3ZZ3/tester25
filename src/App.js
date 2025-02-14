@@ -9,10 +9,11 @@ import LoveLetter from "./pages/LoveLetter";
 import GlobalStyle from "./styles/GlobalStyle";
 import { useState, useEffect } from 'react';
 import backgroundMusic from './assets/bg.mp3'; 
+import  Countdown from './pages/Countdown';
 
 const App = () => {
   const [audio] = useState(new Audio(backgroundMusic));
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlay = async () => {
     console.log("Toggle button clicked");
@@ -117,35 +118,30 @@ const App = () => {
       <GlobalStyle />
       <Hearts />  {/* Floating hearts applied globally */}
       <Navbar />
-      <div>
-        <button 
-          onClick={togglePlay}
-          style={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            zIndex: 1000,
-            padding: '10px',
-            borderRadius: '50%',
-            background: 'rgba(0, 0, 0, 0.5)',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            width: '40px',
-            height: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          {isPlaying ? '🔊' : '🔇'}
-        </button>
-      </div>
+      <Home />
+      <button 
+        onClick={togglePlay}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1000,
+          padding: '10px',
+          borderRadius: '50%',
+          background: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          border: 'none',
+          cursor: 'pointer'
+        }}
+      >
+        {isPlaying ? '🔇' : '🔊'}
+      </button>
       <AnimatePresence>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/love-letter" element={<LoveLetter />} />
+          <Route path="/countdown" element={<Countdown />} />
         </Routes>
       </AnimatePresence>
     </Router>
